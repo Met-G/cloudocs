@@ -1,18 +1,33 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
+import AuthRoute from '@/components/AuthRoute';
+import Layout from '@/pages/Layout';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import Home from '@/pages/Home';
+import Article from '@/pages/Article';
+import Publish from '@/pages/Publish';
+import NotFound from '@/pages/NotFound';
+import Agreement from '@/pages/Agreement';
+import './App.css'
 
-// 导入页面组件
-import Login from './pages/Login'
-import Layout from './pages/Layout'
-
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route path="/login" element={<Login />} />
+        <Route path='/*' element={
+          <AuthRoute>
+            <Layout />
+          </AuthRoute>
+        }>
+          <Route index element={<Home />} />
+          <Route path='article' element={<Article />} />
+          <Route path='publish' element={<Publish />} />
+          <Route path='*' element={<NotFound />} />
+        </Route>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Register />} />
+        <Route path='/agreement' element={<Agreement />} />
       </Routes>
     </div>
-  )
+  );
 }
-
-export default App

@@ -1,0 +1,55 @@
+.ant-layout {
+  height: 100%;
+}
+
+.header {
+  padding: 0;
+}
+
+.layout-content {
+  overflow-y: auto;
+}
+
+.user-info {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 20px;
+
+  .user-name {
+    margin-right: 20px;
+  }
+
+  .user-logout {
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+
+.ant-layout-header {
+  padding: 0 !important;
+}
+
+.logo {
+  height: 140px;
+  background: url('~@/assets/logo.svg') no-repeat center / 160px auto;
+  animation: App-logo-spin infinite 15s linear;
+}
+
+.site-layout-sub-header-background {
+  background: #fff;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

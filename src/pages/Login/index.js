@@ -11,7 +11,7 @@ export default function Login() {
 
   const onFinish = async (values) => {
     try {
-      await loginStore.getToken(values);
+      await loginStore.logIn(values);
       navigate('/', { replace: true });
       message.success('登录成功');
     } catch (err) {
@@ -36,7 +36,7 @@ export default function Login() {
           onFinishFailed={onFinishFailed}
         >
           <Form.Item
-            name="mobile"
+            name="tel"
             rules={[
               {
                 required: true,
@@ -56,7 +56,7 @@ export default function Login() {
             />
           </Form.Item>
           <Form.Item
-            name="code"
+            name="pass"
             rules={[
               {
                 required: true,
@@ -76,7 +76,7 @@ export default function Login() {
               <Checkbox>记住我</Checkbox>
             </Form.Item>
 
-            <a className="login-form-forgot" href="">
+            <a className="login-form-forgot" href="/agreement" target="_blank">
               忘记密码
             </a>
           </Form.Item>
@@ -86,7 +86,7 @@ export default function Login() {
               size="large" type="primary" htmlType="submit" className="login-form-button">
               登录
             </Button>
-            没有帐户？ <a href="">注册</a>
+            没有帐户？ <a href="/signup">注册</a>
           </Form.Item>
         </Form>
       </Card>
