@@ -12,10 +12,10 @@ export default function Login() {
   const onFinish = async (values) => {
     try {
       await loginStore.logIn(values);
-      navigate('/', { replace: true });
+      navigate('/article', { replace: true });
       message.success('登录成功');
     } catch (err) {
-      message.error(err.response?.data.message || '登录失败');
+      message.error(err.response?.data.message || '帐号或密码错误');
     }
   };
 

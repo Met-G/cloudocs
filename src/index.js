@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HistoryRouter, history } from '@/utils/history';
+import { HistoryRouter, history } from '@/utils';
 
 import 'antd/dist/antd.min.css'
 import './index.scss';

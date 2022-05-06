@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Layout, Menu, Popconfirm, Breadcrumb } from 'antd';
 import {
@@ -11,6 +11,7 @@ import './index.scss'
 const { Header, Content, Footer, Sider } = Layout;
 
 function CloudocsLayout() {
+  const [collapsed, setCollapsed] = useState(false);
   const { pathname } = useLocation();
 
   const { userStore, loginStore } = useStore()
@@ -30,8 +31,10 @@ function CloudocsLayout() {
   return (
     <Layout>
       <Sider
+        className='sider'
         breakpoint="lg"
         collapsedWidth="0"
+        onCollapse={(collapsed, type) => setCollapsed(collapsed)}
       >
         <div className="logo" />
         <Menu
@@ -39,9 +42,9 @@ function CloudocsLayout() {
           mode="inline"
           selectedKeys={[pathname]}
         >
-          <Menu.Item icon={<HomeOutlined />} key="/">
+          {/* <Menu.Item icon={<HomeOutlined />} key="/">
             <Link to="/">主页</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item icon={<DiffOutlined />} key="/article">
             <Link to="/article">文档</Link>
           </Menu.Item>
@@ -50,7 +53,11 @@ function CloudocsLayout() {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout>
+      <Layout
+        style={collapsed ? null : {
+          marginLeft: 200,
+        }}
+      >
         <Header className="site-layout-sub-header-background" style={{ position: 'sticky', top: 0, padding: 0 }} >
           <div className="user-info">
             <span className="user-name">{userStore.userInfo.name}</span>
